@@ -3,14 +3,25 @@ package mx.hercarr.galileox;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
+import java.util.List;
+
+import mx.hercarr.galileox.model.Photo;
+import mx.hercarr.galileox.presenter.PhotosPresenter;
 import mx.hercarr.galileox.rest.FiveHundredPXClient;
 import mx.hercarr.galileox.rest.PhotoSearchResponse;
+import mx.hercarr.galileox.rest.PhotoService;
+import mx.hercarr.galileox.view.IPhotosView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity
+        extends AppCompatActivity
+        implements IPhotosView {
+
+    private PhotosPresenter presenter;
 
     private static final String TAG = "GALILEOX";
 
@@ -19,18 +30,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Call<PhotoSearchResponse> call = FiveHundredPXClient.getPhotoService().search();
-        call.enqueue(new Callback<PhotoSearchResponse>() {
-            @Override
-            public void onResponse(Call<PhotoSearchResponse> call, Response<PhotoSearchResponse> response) {
-                Log.d(TAG, "onResponse: " + response.body().getPhotos().size());
-            }
+        presenter = new PhotosPresenter(this);
+        presenter.searchPhotos();
+    }
 
-            @Override
-            public void onFailure(Call<PhotoSearchResponse> call, Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getLocalizedMessage());
-            }
-        });
+    @Override
+    public void showPhotos(List<Photo> photos) {
+        Log.d(TAG, String.valueOf(photos.size()));
+    }
+
+    @Override
+    public void showNoResults() {
+        Log.d(TAG, String.valueOf("showNoResults"));
+    }
+
+    @Override
+    public void showError(String error) {
+        Log.d(TAG, String.valueOf(error));
+    }
+
+    @Override
+    public void showNetworkError() {
+        Log.d(TAG, String.valueOf("showNetworkError"));
     }
 
 }

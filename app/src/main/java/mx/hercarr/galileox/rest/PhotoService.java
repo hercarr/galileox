@@ -9,6 +9,6 @@ import retrofit2.http.GET;
 public interface PhotoService {
 
     @GET("photos")
-    Call<PhotoSearchResponse> search();
+    Call<PhotoSearchResponse> searchPhotos();
 
 }
