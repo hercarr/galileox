@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">GalileoX</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">PhotoGallery</string>
+    <string name="label.photo.list.search">Search amazing photos...</string>
+    <string name="menu.label.photo.list.search.editors">Editors</string>
+    <string name="menu.label.photo.list.search.popular">Popular</string>
+    <string name="menu.label.photo.list.search.upcoming">Upcoming</string>
 </resources>

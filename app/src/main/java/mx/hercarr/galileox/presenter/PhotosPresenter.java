@@ -22,16 +22,12 @@ public class PhotosPresenter {
         this.view = view;
     }
 
-    public void searchPhotos() {
-        Call<PhotoSearchResponse> call = FiveHundredPXClient.getPhotoService().searchPhotos();
+    public void findPhotos(String feature) {
+        Call<PhotoSearchResponse> call = FiveHundredPXClient.getPhotoService().findPhotos(feature);
         call.enqueue(new Callback<PhotoSearchResponse>() {
             @Override
             public void onResponse(Call<PhotoSearchResponse> call, Response<PhotoSearchResponse> response) {
-                List<Photo> photos = response.body().getPhotos();
-                if (photos != null && photos.size() > 0)
-                    view.showPhotos(photos);
-                else
-                    view.showNoResults();
+                notifyResults(response.body().getPhotos());
             }
 
             @Override
@@ -39,6 +35,28 @@ public class PhotosPresenter {
                 view.showError(t.getLocalizedMessage());
             }
         });
+    }
+
+    public void searchPhotos(String keyword) {
+        Call<PhotoSearchResponse> call = FiveHundredPXClient.getPhotoService().searchPhotos(keyword);
+        call.enqueue(new Callback<PhotoSearchResponse>() {
+            @Override
+            public void onResponse(Call<PhotoSearchResponse> call, Response<PhotoSearchResponse> response) {
+                notifyResults(response.body().getPhotos());
+            }
+
+            @Override
+            public void onFailure(Call<PhotoSearchResponse> call, Throwable t) {
+                view.showError(t.getLocalizedMessage());
+            }
+        });
+    }
+
+    private void notifyResults(List<Photo> photos) {
+        if (photos != null && photos.size() > 0)
+            view.showPhotos(photos);
+        else
+            view.showNoResults();
     }
 
 }

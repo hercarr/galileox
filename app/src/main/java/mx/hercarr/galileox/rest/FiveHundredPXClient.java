@@ -41,6 +41,7 @@ public class FiveHundredPXClient {
 
                 HttpUrl url = originalUrl.newBuilder()
                                          .addQueryParameter("consumer_key", CONSUMER_KEY)
+                                         .addQueryParameter("rpp", Parameters.DEFAULT_RECORDS)
                                          .build();
 
                 Request.Builder builder = originalRequest.newBuilder()
@@ -68,4 +69,12 @@ public class FiveHundredPXClient {
     public static PhotoService getPhotoService() {
         return photoService;
     }
+
+    public static class Parameters {
+        public static final String EDITORS = "editors";
+        public static final String POPULAR = "popular";
+        public static final String UPCOMING = "upcoming";
+        public static final String DEFAULT_RECORDS = "100";
+    }
+
 }

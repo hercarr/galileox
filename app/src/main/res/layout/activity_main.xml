@@ -21,12 +21,28 @@
             app:popupTheme="@style/AppTheme.PopupOverlay"
             app:layout_scrollFlags="scroll|enterAlways" />
 
+        <com.arlib.floatingsearchview.FloatingSearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:floatingSearch_searchBarMarginLeft="@dimen/search_view_inset"
+            app:floatingSearch_searchBarMarginTop="@dimen/search_view_inset"
+            app:floatingSearch_searchBarMarginRight="@dimen/search_view_inset"
+            app:floatingSearch_searchHint="@string/label.photo.list.search"
+            app:floatingSearch_leftActionMode="showSearch"
+            app:floatingSearch_showVoiceInput="true"
+            app:floatingSearch_showSearchKey="true"
+            app:floatingSearch_menu="@menu/menu_main_search" />
+
     </android.support.design.widget.AppBarLayout>
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvPhotos"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:clipToPadding="false"
+        android:padding="@dimen/card_view_item_offset"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </android.support.design.widget.CoordinatorLayout>
