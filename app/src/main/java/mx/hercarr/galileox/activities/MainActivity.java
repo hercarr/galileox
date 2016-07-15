@@ -1,34 +1,19 @@
 package mx.hercarr.galileox.activities;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-
-import java.util.ArrayList;
-import java.util.List;
+import android.support.v7.widget.Toolbar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import mx.hercarr.galileox.R;
-import mx.hercarr.galileox.adapters.PhotosAdapter;
-import mx.hercarr.galileox.model.Photo;
-import mx.hercarr.galileox.presenter.PhotosPresenter;
-import mx.hercarr.galileox.view.IPhotosView;
+import mx.hercarr.galileox.fragments.PhotoListFragment;
 
-public class MainActivity
-        extends AppCompatActivity
-        implements IPhotosView {
+public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.rvPhotos)
-    RecyclerView rvPhotos;
-
-    private PhotosPresenter presenter;
-    private PhotosAdapter adapter;
-
-    private static final String TAG = "GALILEOX";
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,41 +24,20 @@ public class MainActivity
     }
 
     private void init() {
-        setupAdapter();
-        setupRecyclerView();
-        presenter = new PhotosPresenter(this);
-        presenter.searchPhotos();
+        setupToolbar();
+        loadDefaultFragment();
     }
 
-    private void setupAdapter() {
-        adapter = new PhotosAdapter(this, new ArrayList<Photo>());
+    private void setupToolbar() {
+        setSupportActionBar(toolbar);
     }
 
-    private void setupRecyclerView() {
-        rvPhotos.setLayoutManager(new GridLayoutManager(this, 2));
-
-        rvPhotos.setAdapter(adapter);
-    }
-
-    @Override
-    public void showPhotos(List<Photo> photos) {
-        adapter.reload(photos);
-        Log.d(TAG, String.valueOf(photos.size()));
-    }
-
-    @Override
-    public void showNoResults() {
-        Log.d(TAG, String.valueOf("showNoResults"));
-    }
-
-    @Override
-    public void showError(String error) {
-        Log.d(TAG, String.valueOf(error));
-    }
-
-    @Override
-    public void showNetworkError() {
-        Log.d(TAG, String.valueOf("showNetworkError"));
+    private void loadDefaultFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager
+            .beginTransaction()
+            .replace(R.id.frameLayout, PhotoListFragment.newInstance())
+            .commit();
     }
 
 }
