@@ -42,6 +42,7 @@ public class FiveHundredPXClient {
                 HttpUrl url = originalUrl.newBuilder()
                                          .addQueryParameter("consumer_key", CONSUMER_KEY)
                                          .addQueryParameter("rpp", Parameters.DEFAULT_RECORDS)
+                                         .addQueryParameter("image_size", Parameters.DEFAULT_IMAGE_SIZE)
                                          .build();
 
                 Request.Builder builder = originalRequest.newBuilder()
@@ -75,6 +76,7 @@ public class FiveHundredPXClient {
         public static final String POPULAR = "popular";
         public static final String UPCOMING = "upcoming";
         public static final String DEFAULT_RECORDS = "100";
+        public static final String DEFAULT_IMAGE_SIZE = "3";
     }
 
 }

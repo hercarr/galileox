@@ -1,6 +1,8 @@
 package mx.hercarr.galileox.activities;
 
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements IPhotosView {
     Toolbar toolbar;
     @BindView(R.id.searchView)
     FloatingSearchView searchView;
+    @BindView(R.id.swipeToRefresh)
+    SwipeRefreshLayout swipeToRefresh;
     @BindView(R.id.rvPhotos)
     RecyclerView rvPhotos;
 
@@ -49,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements IPhotosView {
         setupToolbar();
         setupSearchView();
         setupAdapter();
+        setupSwipeToRefresh();
         setupRecyclerView();
         presenter = new PhotosPresenter(this);
         presenter.findPhotos(null);
@@ -94,6 +99,20 @@ public class MainActivity extends AppCompatActivity implements IPhotosView {
         adapter = new PhotosAdapter(this, new ArrayList<Photo>());
     }
 
+    private void setupSwipeToRefresh() {
+        swipeToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                presenter.searchPhotos(searchView.getQuery());
+            }
+        });
+        swipeToRefresh.setColorSchemeColors(
+                ContextCompat.getColor(this, R.color.colorPrimaryDark),
+                ContextCompat.getColor(this, R.color.colorAccent),
+                ContextCompat.getColor(this, R.color.colorPrimaryDark)
+        );
+    }
+
     private void setupRecyclerView() {
         rvPhotos.setLayoutManager(new GridLayoutManager(this, 2));
         rvPhotos.addItemDecoration(new ItemOffsetDecoration(this, R.dimen.card_view_item_offset));
@@ -103,6 +122,9 @@ public class MainActivity extends AppCompatActivity implements IPhotosView {
     @Override
     public void showPhotos(List<Photo> photos) {
         adapter.reload(photos);
+        if (swipeToRefresh.isRefreshing()) {
+            swipeToRefresh.setRefreshing(false);
+        }
         Log.d(TAG, String.valueOf(photos.size()));
     }
 

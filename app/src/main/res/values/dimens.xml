@@ -6,7 +6,7 @@
     <dimen name="card_view_elevation">4dp</dimen>
     <dimen name="card_view_radius">4dp</dimen>
     <dimen name="card_view_image_size">160dp</dimen>
-    <dimen name="card_view_item_offset">5dp</dimen>
+    <dimen name="card_view_item_offset">8dp</dimen>
     <dimen name="card_view_image_margin">4dp</dimen>
 
     <dimen name="search_view_inset">8dp</dimen>
