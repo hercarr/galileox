@@ -20,6 +20,7 @@ import mx.hercarr.galileox.R;
 import mx.hercarr.galileox.adapters.PhotosAdapter;
 import mx.hercarr.galileox.model.Photo;
 import mx.hercarr.galileox.presenter.PhotosPresenter;
+import mx.hercarr.galileox.util.ItemOffsetDecoration;
 import mx.hercarr.galileox.view.IPhotosView;
 
 /**
@@ -64,7 +65,7 @@ public class PhotoListFragment extends Fragment implements IPhotosView {
 
     private void setupRecyclerView() {
         rvPhotos.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-
+        rvPhotos.addItemDecoration(new ItemOffsetDecoration(getActivity(), R.dimen.card_view_item_offset));
         rvPhotos.setAdapter(adapter);
     }
 
