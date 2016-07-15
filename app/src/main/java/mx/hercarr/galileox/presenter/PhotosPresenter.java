@@ -1,7 +1,5 @@
 package mx.hercarr.galileox.presenter;
 
-import android.util.Log;
-
 import java.util.List;
 
 import mx.hercarr.galileox.model.Photo;
@@ -15,6 +13,7 @@ import retrofit2.Response;
 /**
  * Created by hercarr on 7/13/16.
  */
+
 public class PhotosPresenter {
 
     private IPhotosView view;

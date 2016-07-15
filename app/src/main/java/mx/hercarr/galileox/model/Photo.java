@@ -1,5 +1,7 @@
 package mx.hercarr.galileox.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 /**
@@ -7,9 +9,14 @@ import java.io.Serializable;
  */
 public class Photo {
 
+    @SerializedName("id")
     private Long id;
+    @SerializedName("name")
     private String name;
+    @SerializedName("description")
     private String description;
+    @SerializedName("image_url")
+    private String imageUrl;
 
     public Long getId() {
         return id;
@@ -33,6 +40,14 @@ public class Photo {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
 }
