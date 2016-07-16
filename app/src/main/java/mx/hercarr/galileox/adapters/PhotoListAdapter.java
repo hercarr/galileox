@@ -12,20 +12,23 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import mx.hercarr.galileox.R;
+import mx.hercarr.galileox.activities.listeners.PhotoListListener;
 import mx.hercarr.galileox.model.Photo;
 import mx.hercarr.galileox.util.ImageLoaderUtil;
 
 /**
  * Created by hercarr on 7/13/16.
  */
-public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotoViewHolder> {
+public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.PhotoViewHolder> {
 
     private Context context;
     private List<Photo> photos;
+    private PhotoListListener listener;
 
-    public PhotosAdapter(Context context, List<Photo> photos) {
+    public PhotoListAdapter(Context context, List<Photo> photos, PhotoListListener listener) {
         this.context = context;
         this.photos = photos;
+        this.listener = listener;
     }
 
     @Override
@@ -59,8 +62,21 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotoViewH
             ButterKnife.bind(this, itemView);
         }
 
-        public void bindPhoto(Photo photo) {
+        public void bindPhoto(final Photo photo) {
             ImageLoaderUtil.loadImage(context, imgPhoto, photo.getImageUrl());
+            imgPhoto.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.show(photo);
+                }
+            });
+            imgPhoto.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    listener.share(photo);
+                    return false;
+                }
+            });
         }
 
     }

@@ -11,5 +11,8 @@
 
     <dimen name="search_view_inset">8dp</dimen>
 
+    <dimen name="photo_detail_height_size">240dp</dimen>
+    <dimen name="photo_detail_fab_margin">24dp</dimen>
+
 </resources>
 
