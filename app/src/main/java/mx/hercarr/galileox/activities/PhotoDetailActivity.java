@@ -7,7 +7,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -16,7 +15,7 @@ import mx.hercarr.galileox.model.Photo;
 import mx.hercarr.galileox.rest.FiveHundredPXClient;
 import mx.hercarr.galileox.rest.PhotoResponse;
 import mx.hercarr.galileox.util.Constants;
-import mx.hercarr.galileox.util.ImageLoaderUtil;
+import mx.hercarr.galileox.util.ImageLoaderUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -86,7 +85,7 @@ public class PhotoDetailActivity extends AppCompatActivity {
 
     private void renderDetails() {
         if (photo != null) {
-            ImageLoaderUtil.loadImage(PhotoDetailActivity.this, imgPhoto, photo.getImageUrl());
+            ImageLoaderUtils.loadImage(PhotoDetailActivity.this, imgPhoto, photo.getImageUrl());
             collapsingToolbarLayout.setTitle(photo.getName());
         }
     }

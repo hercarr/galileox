@@ -14,7 +14,7 @@ import butterknife.ButterKnife;
 import mx.hercarr.galileox.R;
 import mx.hercarr.galileox.activities.listeners.PhotoListListener;
 import mx.hercarr.galileox.model.Photo;
-import mx.hercarr.galileox.util.ImageLoaderUtil;
+import mx.hercarr.galileox.util.ImageLoaderUtils;
 
 /**
  * Created by hercarr on 7/13/16.
@@ -63,7 +63,7 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.Phot
         }
 
         public void bindPhoto(final Photo photo) {
-            ImageLoaderUtil.loadImage(context, imgPhoto, photo.getImageUrl());
+            ImageLoaderUtils.loadImage(context, imgPhoto, photo.getImageUrl());
             imgPhoto.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

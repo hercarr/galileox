@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     android:fitsSystemWindows="true"
     tools:context=".activities.MainActivity">
 
@@ -51,5 +52,29 @@
             android:padding="@dimen/card_view_item_offset" />
 
     </android.support.v4.widget.SwipeRefreshLayout>
+
+    <LinearLayout
+        android:id="@+id/lLayoutMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:layout_width="@dimen/photo_no_results_image_size"
+            android:layout_height="@dimen/photo_no_results_image_size"
+            android:src="@drawable/ic_no_results_found"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:id="@+id/lblMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/label.photo.no.internet.connection"
+            android:textAlignment="center"
+            style="@style/PhotoListMessage" />
+
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

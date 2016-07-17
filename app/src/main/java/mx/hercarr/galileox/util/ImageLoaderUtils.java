@@ -10,7 +10,7 @@ import mx.hercarr.galileox.R;
 /**
  * Created by hercarr on 7/13/16.
  */
-public class ImageLoaderUtil {
+public class ImageLoaderUtils {
 
     public static void loadImage(Context context, ImageView imageView, String url) {
         Glide.with(context)

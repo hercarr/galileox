@@ -8,9 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
 
@@ -33,8 +35,6 @@ public class MainActivity
         extends AppCompatActivity
         implements IPhotosView, PhotoListListener {
 
-    private static final String TAG = "GALILEOX";
-
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.searchView)
@@ -43,6 +43,10 @@ public class MainActivity
     SwipeRefreshLayout swipeToRefresh;
     @BindView(R.id.rvPhotos)
     RecyclerView rvPhotos;
+    @BindView(R.id.lLayoutMessage)
+    LinearLayout lLayoutMessage;
+    @BindView(R.id.lblMessage)
+    TextView lblMessage;
 
     private PhotosPresenter presenter;
     private PhotoListAdapter adapter;
@@ -64,7 +68,8 @@ public class MainActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-
+            case R.id.action_about:
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -76,7 +81,7 @@ public class MainActivity
         setupSwipeToRefresh();
         setupRecyclerView();
         presenter = new PhotosPresenter(this);
-        presenter.findPhotos(null);
+        presenter.findPhotos(this, null);
     }
 
     private void setupToolbar() {
@@ -95,7 +100,7 @@ public class MainActivity
 
             @Override
             public void onFocusCleared() {
-                presenter.searchPhotos(searchView.getQuery());
+                presenter.searchPhotos(MainActivity.this, searchView.getQuery());
             }
         });
         searchView.setOnMenuItemClickListener(new FloatingSearchView.OnMenuItemClickListener() {
@@ -114,7 +119,7 @@ public class MainActivity
                         feature = FiveHundredPXClient.Parameters.UPCOMING;
                         break;
                 }
-                presenter.findPhotos(feature);
+                presenter.findPhotos(MainActivity.this, feature);
             }
         });
     }
@@ -127,7 +132,7 @@ public class MainActivity
         swipeToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                presenter.searchPhotos(searchView.getQuery());
+                presenter.searchPhotos(MainActivity.this, searchView.getQuery());
             }
         });
         swipeToRefresh.setColorSchemeColors(
@@ -138,33 +143,53 @@ public class MainActivity
     }
 
     private void setupRecyclerView() {
+        hideMessage();
         rvPhotos.setLayoutManager(new GridLayoutManager(this, 2));
         rvPhotos.addItemDecoration(new ItemOffsetDecoration(this, R.dimen.card_view_item_offset));
         rvPhotos.setAdapter(adapter);
     }
 
-    @Override
-    public void showPhotos(List<Photo> photos) {
-        adapter.reload(photos);
+    private void hideRefreshing() {
         if (swipeToRefresh.isRefreshing()) {
             swipeToRefresh.setRefreshing(false);
         }
-        Log.d(TAG, String.valueOf(photos.size()));
+    }
+
+    private void showMessage(String message) {
+        lblMessage.setText(message);
+        lLayoutMessage.setVisibility(View.VISIBLE);
+        rvPhotos.setVisibility(View.GONE);
+    }
+
+    private void hideMessage() {
+        lLayoutMessage.setVisibility(View.GONE);
+        rvPhotos.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void showPhotos(List<Photo> photos) {
+        hideMessage();
+        hideRefreshing();
+        adapter.reload(photos);
+        rvPhotos.smoothScrollToPosition(0);
     }
 
     @Override
     public void showNoResults() {
-        Log.d(TAG, String.valueOf("showNoResults"));
+        showMessage(getString(R.string.label_photo_list_no_results));
+        hideRefreshing();
     }
 
     @Override
     public void showError(String error) {
-        Log.d(TAG, String.valueOf(error));
+        showMessage(String.format(getString(R.string.label_photo_list_error), error));
+        hideRefreshing();
     }
 
     @Override
     public void showNetworkError() {
-        Log.d(TAG, String.valueOf("showNetworkError"));
+        showMessage(getString(R.string.label_photo_no_internet_connection));
+        hideRefreshing();
     }
 
 
