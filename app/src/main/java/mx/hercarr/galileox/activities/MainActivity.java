@@ -82,6 +82,12 @@ public class MainActivity
         setupRecyclerView();
         presenter = new PhotosPresenter(this);
         presenter.findPhotos(this, null);
+        swipeToRefresh.post(new Runnable() {
+            @Override
+            public void run() {
+                swipeToRefresh.setRefreshing(true);
+            }
+        });
     }
 
     private void setupToolbar() {

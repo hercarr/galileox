@@ -17,9 +17,19 @@ public class ImageLoaderUtils {
              .load(url)
              .centerCrop()
              .crossFade()
-             .placeholder(R.mipmap.ic_launcher)
-             .error(R.mipmap.ic_launcher)
+             .placeholder(R.mipmap.ic_background)
+             .error(R.drawable.ic_no_results_found)
              .into(imageView);
+    }
+
+    public static void loadImageDetail(Context context, ImageView imageView, String url) {
+        Glide.with(context)
+                .load(url)
+                .centerCrop()
+                .crossFade()
+                .placeholder(R.drawable.bg_detail)
+                .error(R.drawable.ic_no_results_found)
+                .into(imageView);
     }
 
 }

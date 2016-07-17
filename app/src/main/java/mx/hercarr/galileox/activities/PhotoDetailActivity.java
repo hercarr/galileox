@@ -85,7 +85,7 @@ public class PhotoDetailActivity extends AppCompatActivity {
 
     private void renderDetails() {
         if (photo != null) {
-            ImageLoaderUtils.loadImage(PhotoDetailActivity.this, imgPhoto, photo.getImageUrl());
+            ImageLoaderUtils.loadImageDetail(PhotoDetailActivity.this, imgPhoto, photo.getImageUrl());
             collapsingToolbarLayout.setTitle(photo.getName());
         }
     }
