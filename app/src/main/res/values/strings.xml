@@ -4,6 +4,7 @@
     <string name="label.photo.list.search">Search amazing photos&#8230;</string>
     <string name="label.photo.list.no.results">Oops! No pictures found!</string>
     <string name="label.photo.list.error">Oops! There was some error: %s</string>
+    <string name="title.photo.list.share">Share image!</string>
     <string name="label.photo.detail.loading">Loading&#8230;</string>
     <string name="menu.main.about">About</string>
     <string name="menu.label.photo.list.search.animals">Animals</string>

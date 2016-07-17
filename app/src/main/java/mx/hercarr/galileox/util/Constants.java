@@ -16,4 +16,10 @@ public class Constants {
 
     }
 
+    public static class Files {
+
+        public static final String IMAGE_TYPE = "image/jpeg";
+
+    }
+
 }

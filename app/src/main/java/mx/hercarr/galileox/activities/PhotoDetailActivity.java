@@ -1,6 +1,11 @@
 package mx.hercarr.galileox.activities;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -8,8 +13,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
+import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
+
+import java.io.ByteArrayOutputStream;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.OnLongClick;
 import mx.hercarr.galileox.R;
 import mx.hercarr.galileox.util.Constants;
 import mx.hercarr.galileox.util.ImageLoaderUtils;
@@ -64,6 +75,31 @@ public class PhotoDetailActivity extends AppCompatActivity {
             ImageLoaderUtils.loadImageDetail(PhotoDetailActivity.this, imgPhoto, imageUrl);
             collapsingToolbarLayout.setTitle(tags);
         }
+    }
+
+    @OnClick(R.id.fabShare)
+    public void share() {
+        Bitmap bitmap;
+        if (imgPhoto.getDrawable() instanceof GlideBitmapDrawable) {
+            bitmap = ((GlideBitmapDrawable) imgPhoto.getDrawable()).getBitmap();
+        } else if (imgPhoto.getDrawable() instanceof BitmapDrawable) {
+            bitmap = ((BitmapDrawable) imgPhoto.getDrawable()).getBitmap();
+        } else {
+            imgPhoto.buildDrawingCache();
+            bitmap = imgPhoto.getDrawingCache();
+        }
+
+        if (bitmap != null) {
+            Intent share = new Intent(Intent.ACTION_SEND);
+            share.setType("image/jpeg");
+            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+            String path = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "title", null);
+            Uri imageUri = Uri.parse(path);
+            share.putExtra(Intent.EXTRA_STREAM, imageUri);
+            startActivity(Intent.createChooser(share, getString(R.string.title_photo_list_share)));
+        }
+        imgPhoto.destroyDrawingCache();
     }
 
 }

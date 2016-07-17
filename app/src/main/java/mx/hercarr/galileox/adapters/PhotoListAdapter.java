@@ -73,7 +73,7 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.Phot
             imgPhoto.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    listener.share(photo);
+                    listener.share(String.valueOf(photo.getId()), imgPhoto);
                     return false;
                 }
             });
