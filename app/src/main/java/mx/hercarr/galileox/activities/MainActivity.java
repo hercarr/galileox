@@ -69,11 +69,7 @@ public class MainActivity
     private PhotosPresenter presenter;
     private PhotoListAdapter adapter;
     private String category = null;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,9 +77,6 @@ public class MainActivity
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         init();
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     @Override
@@ -257,7 +250,10 @@ public class MainActivity
     public void show(Photo photo) {
         Intent intent = new Intent(this, PhotoDetailActivity.class);
         intent.putExtra(Constants.IntentExtras.PHOTO_TAGS, photo.getTags());
+        intent.putExtra(Constants.IntentExtras.PHOTO_DOWNLOADS, photo.getDownloads());
+        intent.putExtra(Constants.IntentExtras.PHOTO_LIKES, photo.getLikes());
         intent.putExtra(Constants.IntentExtras.PHOTO_IMAGE_URL, photo.getImageUrl());
+        intent.putExtra(Constants.IntentExtras.PHOTO_PAGE_URL, photo.getUrl());
         startActivity(intent);
     }
 
@@ -281,7 +277,7 @@ public class MainActivity
             String path = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, title, null);
             Uri imageUri = Uri.parse(path);
             share.putExtra(Intent.EXTRA_STREAM, imageUri);
-            startActivity(Intent.createChooser(share, getString(R.string.title_photo_list_share)));
+            startActivity(Intent.createChooser(share, getString(R.string.title_photo_share)));
         }
         imageView.destroyDrawingCache();
     }

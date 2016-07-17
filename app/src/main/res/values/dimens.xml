@@ -14,6 +14,7 @@
     <dimen name="photo_no_results_image_size">192dp</dimen>
     <dimen name="photo_detail_height_size">240dp</dimen>
     <dimen name="photo_detail_fab_margin">24dp</dimen>
+    <dimen name="photo_detail_info_margin">8dp</dimen>
 
 </resources>
 

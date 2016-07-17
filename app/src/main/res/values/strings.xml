@@ -1,12 +1,10 @@
 <resources>
     <string name="app_name">PhotoGallery</string>
+
     <string name="label.photo.no.internet.connection">Oops! No internet connection available!</string>
     <string name="label.photo.list.search">Search amazing photos&#8230;</string>
     <string name="label.photo.list.no.results">Oops! No pictures found!</string>
     <string name="label.photo.list.error">Oops! There was some error: %s</string>
-    <string name="title.photo.list.share">Share image!</string>
-    <string name="label.photo.detail.loading">Loading&#8230;</string>
-    <string name="menu.main.about">About</string>
     <string name="menu.label.photo.list.search.animals">Animals</string>
     <string name="menu.label.photo.list.search.backgrounds">Backgrounds</string>
     <string name="menu.label.photo.list.search.computer">Computer</string>
@@ -19,4 +17,12 @@
     <string name="menu.label.photo.list.search.places">Places</string>
     <string name="menu.label.photo.list.search.sports">Sports</string>
     <string name="menu.label.photo.list.search.travel">Travel</string>
+
+    <string name="label.photo.detail.loading">Loading&#8230;</string>
+    <string name="label.photo.detail.downloads">%s downloads!</string>
+    <string name="label.photo.detail.likes">%s likes!</string>
+    <string name="btn.photo.detail.website">Open in the browser!</string>
+
+    <string name="title.photo.share">Share image!</string>
+    <string name="menu.main.about">About</string>
 </resources>

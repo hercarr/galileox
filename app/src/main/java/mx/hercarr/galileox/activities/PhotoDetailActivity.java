@@ -12,8 +12,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
+
+import org.w3c.dom.Text;
 
 import java.io.ByteArrayOutputStream;
 
@@ -33,6 +36,12 @@ public class PhotoDetailActivity extends AppCompatActivity {
     Toolbar toolbar;
     @BindView(R.id.imgPhoto)
     ImageView imgPhoto;
+    @BindView(R.id.lblDownloads)
+    TextView lblDownloads;
+    @BindView(R.id.lblLikes)
+    TextView lblLikes;
+
+    private String pageUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,8 +81,13 @@ public class PhotoDetailActivity extends AppCompatActivity {
         if (getIntent() != null && getIntent().getExtras() != null) {
             String imageUrl = getIntent().getStringExtra(Constants.IntentExtras.PHOTO_IMAGE_URL);
             String tags = getIntent().getStringExtra(Constants.IntentExtras.PHOTO_TAGS);
+            Integer downloads = getIntent().getIntExtra(Constants.IntentExtras.PHOTO_DOWNLOADS, 0);
+            Integer likes = getIntent().getIntExtra(Constants.IntentExtras.PHOTO_LIKES, 0);
             ImageLoaderUtils.loadImageDetail(PhotoDetailActivity.this, imgPhoto, imageUrl);
+            pageUrl = getIntent().getStringExtra(Constants.IntentExtras.PHOTO_PAGE_URL);
             collapsingToolbarLayout.setTitle(tags);
+            lblDownloads.setText(String.format(getString(R.string.label_photo_detail_downloads), downloads));
+            lblLikes.setText(String.format(getString(R.string.label_photo_detail_likes), likes));
         }
     }
 
@@ -94,12 +108,21 @@ public class PhotoDetailActivity extends AppCompatActivity {
             share.setType("image/jpeg");
             ByteArrayOutputStream bytes = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-            String path = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "title", null);
+            String path = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, null, null);
             Uri imageUri = Uri.parse(path);
             share.putExtra(Intent.EXTRA_STREAM, imageUri);
-            startActivity(Intent.createChooser(share, getString(R.string.title_photo_list_share)));
+            startActivity(Intent.createChooser(share, getString(R.string.title_photo_share)));
         }
         imgPhoto.destroyDrawingCache();
+    }
+
+    @OnClick(R.id.btnWebSite)
+    public void openBrowser() {
+        Uri uri = Uri.parse(pageUrl);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 
 }

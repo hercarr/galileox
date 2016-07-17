@@ -56,122 +56,53 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="samplecito"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="smaplecito"/>
+                android:src="@drawable/download"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/photo_detail_info_margin" />
 
             <TextView
+                android:id="@+id/lblDownloads"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="samplecito"/>
+                style="@style/PhotoDetailInfo"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/photo_detail_info_margin"
+                tools:text="69 downloads" />
 
-            <Button
-                android:layout_width="match_parent"
+            <ImageView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="smaplecito"/>
+                android:src="@drawable/like"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/photo_detail_info_margin" />
 
             <TextView
+                android:id="@+id/lblLikes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="samplecito"/>
+                style="@style/PhotoDetailInfo"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/photo_detail_info_margin"
+                tools:text="69 likes" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="smaplecito"/>
-
-            <TextView
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="samplecito"/>
+                android:src="@drawable/website"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/photo_detail_info_margin" />
 
             <Button
+                android:id="@+id/btnWebSite"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="smaplecito"/>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="samplecito"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="smaplecito"/>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="samplecito"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="smaplecito"/>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="samplecito"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="smaplecito"/>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="samplecito"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="smaplecito"/>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="samplecito"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="smaplecito"/>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="samplecito"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="smaplecito"/>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="samplecito"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="smaplecito"/>
+                android:background="@color/colorPrimary"
+                android:text="@string/btn.photo.detail.website"
+                android:layout_marginTop="@dimen/photo_detail_info_margin"
+                style="@style/MainButton" />
 
         </android.support.v7.widget.LinearLayoutCompat>
 
