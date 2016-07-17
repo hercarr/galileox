@@ -3,18 +3,63 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_search_editors"
-        android:title="@string/menu.label.photo.list.search.editors"
+        android:id="@+id/action_search_animals"
+        android:title="@string/menu.label.photo.list.search.animals"
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_search_popular"
-        android:title="@string/menu.label.photo.list.search.popular"
+        android:id="@+id/action_search_backgrounds"
+        android:title="@string/menu.label.photo.list.search.backgrounds"
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_search_upcoming"
-        android:title="@string/menu.label.photo.list.search.upcoming"
+        android:id="@+id/action_search_computer"
+        android:title="@string/menu.label.photo.list.search.computer"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_search_education"
+        android:title="@string/menu.label.photo.list.search.education"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_search_fashion"
+        android:title="@string/menu.label.photo.list.search.fashion"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_search_food"
+        android:title="@string/menu.label.photo.list.search.food"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_search_music"
+        android:title="@string/menu.label.photo.list.search.music"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_search_nature"
+        android:title="@string/menu.label.photo.list.search.nature"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_search_people"
+        android:title="@string/menu.label.photo.list.search.people"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_search_places"
+        android:title="@string/menu.label.photo.list.search.places"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_search_sports"
+        android:title="@string/menu.label.photo.list.search.sports"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_search_travel"
+        android:title="@string/menu.label.photo.list.search.travel"
         app:showAsAction="never" />
 
 </menu>

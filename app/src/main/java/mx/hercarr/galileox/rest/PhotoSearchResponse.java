@@ -9,14 +9,14 @@ import mx.hercarr.galileox.model.Photo;
  */
 public class PhotoSearchResponse {
 
-    private List<Photo> photos;
+    private List<Photo> hits;
 
-    public List<Photo> getPhotos() {
-        return photos;
+    public List<Photo> getHits() {
+        return hits;
     }
 
-    public void setPhotos(List<Photo> photos) {
-        this.photos = photos;
+    public void setHits(List<Photo> hits) {
+        this.hits = hits;
     }
 
 }

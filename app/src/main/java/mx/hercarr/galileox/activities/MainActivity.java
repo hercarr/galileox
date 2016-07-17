@@ -26,7 +26,7 @@ import mx.hercarr.galileox.activities.listeners.PhotoListListener;
 import mx.hercarr.galileox.adapters.PhotoListAdapter;
 import mx.hercarr.galileox.model.Photo;
 import mx.hercarr.galileox.presenter.PhotosPresenter;
-import mx.hercarr.galileox.rest.FiveHundredPXClient;
+import mx.hercarr.galileox.rest.PixabayClient;
 import mx.hercarr.galileox.util.Constants;
 import mx.hercarr.galileox.util.ItemOffsetDecoration;
 import mx.hercarr.galileox.view.IPhotosView;
@@ -50,6 +50,7 @@ public class MainActivity
 
     private PhotosPresenter presenter;
     private PhotoListAdapter adapter;
+    private String category = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +82,7 @@ public class MainActivity
         setupSwipeToRefresh();
         setupRecyclerView();
         presenter = new PhotosPresenter(this);
-        presenter.findPhotos(this, null);
+        presenter.searchPhotos(this, null, null);
         swipeToRefresh.post(new Runnable() {
             @Override
             public void run() {
@@ -106,26 +107,52 @@ public class MainActivity
 
             @Override
             public void onFocusCleared() {
-                presenter.searchPhotos(MainActivity.this, searchView.getQuery());
+                presenter.searchPhotos(MainActivity.this, null, searchView.getQuery());
             }
         });
         searchView.setOnMenuItemClickListener(new FloatingSearchView.OnMenuItemClickListener() {
             @Override
             public void onActionMenuItemSelected(MenuItem item) {
-                String feature = null;
                 int id = item.getItemId();
                 switch (id) {
-                    case R.id.action_search_editors:
-                        feature = FiveHundredPXClient.Parameters.EDITORS;
+                    case R.id.action_search_animals:
+                        category = PixabayClient.Parameters.ANIMALS;
                         break;
-                    case R.id.action_search_popular:
-                        feature = FiveHundredPXClient.Parameters.POPULAR;
+                    case R.id.action_search_backgrounds:
+                        category = PixabayClient.Parameters.BACKGROUNDS;
                         break;
-                    case R.id.action_search_upcoming:
-                        feature = FiveHundredPXClient.Parameters.UPCOMING;
+                    case R.id.action_search_computer:
+                        category = PixabayClient.Parameters.COMPUTER;
+                        break;
+                    case R.id.action_search_education:
+                        category = PixabayClient.Parameters.EDUCATION;
+                        break;
+                    case R.id.action_search_fashion:
+                        category = PixabayClient.Parameters.FASHION;
+                        break;
+                    case R.id.action_search_food:
+                        category = PixabayClient.Parameters.FOOD;
+                        break;
+                    case R.id.action_search_music:
+                        category = PixabayClient.Parameters.MUSIC;
+                        break;
+                    case R.id.action_search_nature:
+                        category = PixabayClient.Parameters.NATURE;
+                        break;
+                    case R.id.action_search_people:
+                        category = PixabayClient.Parameters.PEOPLE;
+                        break;
+                    case R.id.action_search_places:
+                        category = PixabayClient.Parameters.PLACES;
+                        break;
+                    case R.id.action_search_sports:
+                        category = PixabayClient.Parameters.SPORTS;
+                        break;
+                    case R.id.action_search_travel:
+                        category = PixabayClient.Parameters.TRAVELS;
                         break;
                 }
-                presenter.findPhotos(MainActivity.this, feature);
+                presenter.searchPhotos(MainActivity.this, category, searchView.getQuery());
             }
         });
     }
@@ -138,7 +165,7 @@ public class MainActivity
         swipeToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                presenter.searchPhotos(MainActivity.this, searchView.getQuery());
+                presenter.searchPhotos(MainActivity.this, category, searchView.getQuery());
             }
         });
         swipeToRefresh.setColorSchemeColors(
@@ -202,7 +229,8 @@ public class MainActivity
     @Override
     public void show(Photo photo) {
         Intent intent = new Intent(this, PhotoDetailActivity.class);
-        intent.putExtra(Constants.IntentExtras.PHOTO_ID, photo.getId());
+        intent.putExtra(Constants.IntentExtras.PHOTO_TAGS, photo.getTags());
+        intent.putExtra(Constants.IntentExtras.PHOTO_IMAGE_URL, photo.getImageUrl());
         startActivity(intent);
     }
 

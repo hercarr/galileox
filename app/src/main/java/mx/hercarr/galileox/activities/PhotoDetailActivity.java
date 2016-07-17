@@ -11,14 +11,8 @@ import android.widget.ImageView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import mx.hercarr.galileox.R;
-import mx.hercarr.galileox.model.Photo;
-import mx.hercarr.galileox.rest.FiveHundredPXClient;
-import mx.hercarr.galileox.rest.PhotoResponse;
 import mx.hercarr.galileox.util.Constants;
 import mx.hercarr.galileox.util.ImageLoaderUtils;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class PhotoDetailActivity extends AppCompatActivity {
 
@@ -29,15 +23,13 @@ public class PhotoDetailActivity extends AppCompatActivity {
     @BindView(R.id.imgPhoto)
     ImageView imgPhoto;
 
-    private Photo photo;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo_detail);
         ButterKnife.bind(this);
-        findPhoto();
         setupToolbar();
+        renderDetails();
     }
 
     @Override
@@ -57,24 +49,6 @@ public class PhotoDetailActivity extends AppCompatActivity {
         }
     }
 
-    private void findPhoto() {
-        Long photoID = getIntent().getLongExtra(Constants.IntentExtras.PHOTO_ID, 0);
-        // TODO - use a presenter or send all data from intent
-        Call<PhotoResponse> call = FiveHundredPXClient.getPhotoService().findPhoto(photoID);
-        call.enqueue(new Callback<PhotoResponse>() {
-            @Override
-            public void onResponse(Call<PhotoResponse> call, Response<PhotoResponse> response) {
-                photo = response.body().getPhoto();
-                renderDetails();
-            }
-
-            @Override
-            public void onFailure(Call<PhotoResponse> call, Throwable t) {
-
-            }
-        });
-    }
-
     private void setupToolbar() {
         toolbar.setTitle(getString(R.string.label_photo_detail_loading));
         setSupportActionBar(toolbar);
@@ -84,9 +58,11 @@ public class PhotoDetailActivity extends AppCompatActivity {
     }
 
     private void renderDetails() {
-        if (photo != null) {
-            ImageLoaderUtils.loadImageDetail(PhotoDetailActivity.this, imgPhoto, photo.getImageUrl());
-            collapsingToolbarLayout.setTitle(photo.getName());
+        if (getIntent() != null && getIntent().getExtras() != null) {
+            String imageUrl = getIntent().getStringExtra(Constants.IntentExtras.PHOTO_IMAGE_URL);
+            String tags = getIntent().getStringExtra(Constants.IntentExtras.PHOTO_TAGS);
+            ImageLoaderUtils.loadImageDetail(PhotoDetailActivity.this, imgPhoto, imageUrl);
+            collapsingToolbarLayout.setTitle(tags);
         }
     }
 

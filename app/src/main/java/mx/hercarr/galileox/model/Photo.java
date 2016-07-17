@@ -11,12 +11,16 @@ public class Photo {
 
     @SerializedName("id")
     private Long id;
-    @SerializedName("name")
-    private String name;
-    @SerializedName("description")
-    private String description;
-    @SerializedName("image_url")
+    @SerializedName("tags")
+    private String tags;
+    @SerializedName("likes")
+    private Integer likes;
+    @SerializedName("downloads")
+    private Integer downloads;
+    @SerializedName("webformatURL")
     private String imageUrl;
+    @SerializedName("pageURL")
+    private String url;
 
     public Long getId() {
         return id;
@@ -26,20 +30,28 @@ public class Photo {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTags() {
+        return tags;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTags(String tags) {
+        this.tags = tags;
     }
 
-    public String getDescription() {
-        return description;
+    public Integer getLikes() {
+        return likes;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setLikes(Integer likes) {
+        this.likes = likes;
+    }
+
+    public Integer getDownloads() {
+        return downloads;
+    }
+
+    public void setDownloads(Integer downloads) {
+        this.downloads = downloads;
     }
 
     public String getImageUrl() {
@@ -48,6 +60,14 @@ public class Photo {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
 }

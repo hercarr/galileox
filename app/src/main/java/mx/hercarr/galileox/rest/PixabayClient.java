@@ -13,15 +13,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * Created by hercarr on 7/13/16.
  */
-public class FiveHundredPXClient {
+public class PixabayClient {
 
-    private static final String BASE_URL = "https://api.500px.com/v1/";
-    private static final String CONSUMER_KEY = "ofVPy9cubsigZCiCcL7fFLsjAIqYHXXWzh1zj70K";
+    private static final String BASE_URL = "https://pixabay.com/";
+    private static final String KEY = "2931831-84f06e086293fb6ddc689b629";
     private static Retrofit retrofit;
     private static OkHttpClient  okHttpClient;
     private static PhotoService photoService;
 
-    private FiveHundredPXClient() {
+    private PixabayClient() {
 
     }
 
@@ -40,9 +40,8 @@ public class FiveHundredPXClient {
                 HttpUrl originalUrl = originalRequest.url();
 
                 HttpUrl url = originalUrl.newBuilder()
-                                         .addQueryParameter("consumer_key", CONSUMER_KEY)
-                                         .addQueryParameter("rpp", Parameters.DEFAULT_RECORDS)
-                                         .addQueryParameter("image_size", Parameters.DEFAULT_IMAGE_SIZE)
+                                         .addQueryParameter("key", KEY)
+                                         .addQueryParameter("per_page", Parameters.DEFAULT_RECORDS)
                                          .build();
 
                 Request.Builder builder = originalRequest.newBuilder()
@@ -72,11 +71,19 @@ public class FiveHundredPXClient {
     }
 
     public static class Parameters {
-        public static final String EDITORS = "editors";
-        public static final String POPULAR = "popular";
-        public static final String UPCOMING = "upcoming";
-        public static final String DEFAULT_RECORDS = "100";
-        public static final String DEFAULT_IMAGE_SIZE = "4";
+        public static final String ANIMALS = "animals";
+        public static final String BACKGROUNDS = "backgrounds";
+        public static final String COMPUTER = "computer";
+        public static final String EDUCATION = "education";
+        public static final String FASHION = "fashion";
+        public static final String FOOD = "food";
+        public static final String MUSIC = "music";
+        public static final String NATURE = "nature";
+        public static final String PEOPLE = "people";
+        public static final String PLACES = "places";
+        public static final String SPORTS = "sports";
+        public static final String TRAVELS = "travel";
+        public static final String DEFAULT_RECORDS = "50";
     }
 
 }

@@ -10,13 +10,7 @@ import retrofit2.http.Query;
  */
 public interface PhotoService {
 
-    @GET("photos/{id}")
-    Call<PhotoResponse> findPhoto(@Path("id") Long id);
-
-    @GET("photos")
-    Call<PhotoSearchResponse> findPhotos(@Query("feature") String feature);
-
-    @GET("photos/search")
-    Call<PhotoSearchResponse> searchPhotos(@Query("term") String keyword);
+    @GET("api/")
+    Call<PhotoSearchResponse> searchPhotos(@Query("category") String category, @Query("q") String keyword);
 
 }
