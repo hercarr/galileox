@@ -55,7 +55,7 @@ public class Photo {
     }
 
     public String getImageUrl() {
-        return imageUrl;
+        return imageUrl.replace("_640", "_960");
     }
 
     public void setImageUrl(String imageUrl) {
