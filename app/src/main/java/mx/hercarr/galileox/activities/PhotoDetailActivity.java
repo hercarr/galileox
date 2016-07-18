@@ -24,6 +24,7 @@ import butterknife.OnClick;
 import mx.hercarr.galileox.R;
 import mx.hercarr.galileox.util.Constants;
 import mx.hercarr.galileox.util.ImageLoaderUtils;
+import mx.hercarr.galileox.util.ImageViewUtil;
 
 public class PhotoDetailActivity extends AppCompatActivity {
 
@@ -100,27 +101,7 @@ public class PhotoDetailActivity extends AppCompatActivity {
 
     @OnClick(R.id.fabShare)
     public void share() {
-        Bitmap bitmap;
-        if (imgPhoto.getDrawable() instanceof GlideBitmapDrawable) {
-            bitmap = ((GlideBitmapDrawable) imgPhoto.getDrawable()).getBitmap();
-        } else if (imgPhoto.getDrawable() instanceof BitmapDrawable) {
-            bitmap = ((BitmapDrawable) imgPhoto.getDrawable()).getBitmap();
-        } else {
-            imgPhoto.buildDrawingCache();
-            bitmap = imgPhoto.getDrawingCache();
-        }
-
-        if (bitmap != null) {
-            Intent share = new Intent(Intent.ACTION_SEND);
-            share.setType(Constants.Files.IMAGE_TYPE);
-            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-            String path = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, null, null);
-            Uri imageUri = Uri.parse(path);
-            share.putExtra(Intent.EXTRA_STREAM, imageUri);
-            startActivity(Intent.createChooser(share, getString(R.string.title_photo_share)));
-        }
-        imgPhoto.destroyDrawingCache();
+        ImageViewUtil.shareImage(this, imgPhoto, tags);
     }
 
     @OnClick(R.id.btnWebSite)

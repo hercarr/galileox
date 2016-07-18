@@ -10,6 +10,6 @@ import mx.hercarr.galileox.model.Photo;
 public interface PhotoListListener {
 
     void show(Photo photo);
-    void share(String title, ImageView imageView);
+    void share(ImageView imageView, String title);
 
 }

@@ -35,6 +35,7 @@ import mx.hercarr.galileox.model.Photo;
 import mx.hercarr.galileox.presenter.PhotosPresenter;
 import mx.hercarr.galileox.rest.PixabayClient;
 import mx.hercarr.galileox.util.Constants;
+import mx.hercarr.galileox.util.ImageViewUtil;
 import mx.hercarr.galileox.util.ItemOffsetDecoration;
 import mx.hercarr.galileox.view.IPhotosView;
 
@@ -247,28 +248,8 @@ public class MainActivity
     }
 
     @Override
-    public void share(String title, ImageView imageView) {
-        Bitmap bitmap;
-        if (imageView.getDrawable() instanceof  GlideBitmapDrawable ) {
-            bitmap = ((GlideBitmapDrawable) imageView.getDrawable()).getBitmap();
-        } else if (imageView.getDrawable() instanceof BitmapDrawable) {
-            bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
-        } else {
-            imageView.buildDrawingCache();
-            bitmap = imageView.getDrawingCache();
-        }
-
-        if (bitmap != null) {
-            Intent share = new Intent(Intent.ACTION_SEND);
-            share.setType(Constants.Files.IMAGE_TYPE);
-            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-            String path = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, title, null);
-            Uri imageUri = Uri.parse(path);
-            share.putExtra(Intent.EXTRA_STREAM, imageUri);
-            startActivity(Intent.createChooser(share, getString(R.string.title_photo_share)));
-        }
-        imageView.destroyDrawingCache();
+    public void share(ImageView imageView, String title) {
+        ImageViewUtil.shareImage(this, imageView, title);
     }
 
 }
