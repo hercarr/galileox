@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Busca Fotos</string>
+
+    <string name="title.photo.share">Compartir foto!</string>
+    <string name="menu.main.about">Acerca de&#8230;</string>
+    <string name="msg.no.internet.connection">Oops! La conexión a internet no esta disponible!</string>
+
+    <string name="photo.list.label.search">Busca fotos increibles&#8230;</string>
+    <string name="photo.list.label.no.results">Oops! No se encontraron fotos!</string>
+    <string name="photo.list.label.error">Oops! Se presento un error: %s</string>
+    <string name="photo.list.menu.search.animals">Animales</string>
+    <string name="photo.list.menu.search.fashion">Moda</string>
+    <string name="photo.list.menu.search.food">Comida</string>
+    <string name="photo.list.menu.search.music">Música</string>
+    <string name="photo.list.menu.search.nature">Naturaleza</string>
+    <string name="photo.list.menu.search.people">Personas</string>
+    <string name="photo.list.menu.search.places">Lugares</string>
+    <string name="photo.list.menu.search.sports">Deportes</string>
+    <string name="photo.list.menu.search.travel">Viajes</string>
+
+    <string name="photo.detail.label.loading">Cargando&#8230;</string>
+    <string name="photo.detail.label.downloads">%s descargas!</string>
+    <string name="photo.detail.label.likes">%s likes!</string>
+    <string name="photo.detail.btn.website">Ver en el navegador!</string>
+
+    <string name="photo.view.msg.tip">Gira la pantalla o aplica un zoom a la imagen para más detalle!</string>
+
+</resources>

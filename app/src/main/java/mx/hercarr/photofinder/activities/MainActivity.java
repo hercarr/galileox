@@ -144,15 +144,6 @@ public class MainActivity
                     case R.id.action_search_animals:
                         category = PixabayClient.Parameters.ANIMALS;
                         break;
-                    case R.id.action_search_backgrounds:
-                        category = PixabayClient.Parameters.BACKGROUNDS;
-                        break;
-                    case R.id.action_search_computer:
-                        category = PixabayClient.Parameters.COMPUTER;
-                        break;
-                    case R.id.action_search_education:
-                        category = PixabayClient.Parameters.EDUCATION;
-                        break;
                     case R.id.action_search_fashion:
                         category = PixabayClient.Parameters.FASHION;
                         break;

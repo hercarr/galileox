@@ -8,21 +8,6 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_search_backgrounds"
-        android:title="@string/photo.list.menu.search.backgrounds"
-        app:showAsAction="never" />
-
-    <item
-        android:id="@+id/action_search_computer"
-        android:title="@string/photo.list.menu.search.computer"
-        app:showAsAction="never" />
-
-    <item
-        android:id="@+id/action_search_education"
-        android:title="@string/photo.list.menu.search.education"
-        app:showAsAction="never" />
-
-    <item
         android:id="@+id/action_search_fashion"
         android:title="@string/photo.list.menu.search.fashion"
         app:showAsAction="never" />
