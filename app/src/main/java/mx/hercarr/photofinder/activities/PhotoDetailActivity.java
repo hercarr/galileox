@@ -1,4 +1,4 @@
-package mx.hercarr.galileox.activities;
+package mx.hercarr.photofinder.activities;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -14,10 +14,10 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import mx.hercarr.galileox.R;
-import mx.hercarr.galileox.util.Constants;
-import mx.hercarr.galileox.util.ImageLoaderUtils;
-import mx.hercarr.galileox.util.ImageViewUtil;
+import mx.hercarr.photofinder.R;
+import mx.hercarr.photofinder.util.Constants;
+import mx.hercarr.photofinder.util.ImageLoaderUtils;
+import mx.hercarr.photofinder.util.ImageViewUtil;
 
 public class PhotoDetailActivity extends AppCompatActivity {
 

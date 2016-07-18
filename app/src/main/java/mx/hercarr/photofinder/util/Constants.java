@@ -1,4 +1,4 @@
-package mx.hercarr.galileox.util;
+package mx.hercarr.photofinder.util;
 
 public class Constants {
 

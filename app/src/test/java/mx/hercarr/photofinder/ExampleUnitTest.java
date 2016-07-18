@@ -1,4 +1,4 @@
-package mx.hercarr.galileox;
+package mx.hercarr.photofinder;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package mx.hercarr.galileox.activities;
+package mx.hercarr.photofinder.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,16 +22,16 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import mx.hercarr.galileox.R;
-import mx.hercarr.galileox.adapters.PhotoListAdapter;
-import mx.hercarr.galileox.listeners.PhotoListListener;
-import mx.hercarr.galileox.model.Photo;
-import mx.hercarr.galileox.presenter.PhotosPresenter;
-import mx.hercarr.galileox.rest.PixabayClient;
-import mx.hercarr.galileox.util.Constants;
-import mx.hercarr.galileox.util.ImageViewUtil;
-import mx.hercarr.galileox.util.ItemOffsetDecoration;
-import mx.hercarr.galileox.view.IPhotosView;
+import mx.hercarr.photofinder.R;
+import mx.hercarr.photofinder.adapters.PhotoListAdapter;
+import mx.hercarr.photofinder.listeners.PhotoListListener;
+import mx.hercarr.photofinder.model.Photo;
+import mx.hercarr.photofinder.presenter.PhotosPresenter;
+import mx.hercarr.photofinder.rest.PixabayClient;
+import mx.hercarr.photofinder.util.Constants;
+import mx.hercarr.photofinder.util.ImageViewUtil;
+import mx.hercarr.photofinder.util.ItemOffsetDecoration;
+import mx.hercarr.photofinder.view.IPhotosView;
 
 public class MainActivity
         extends AppCompatActivity

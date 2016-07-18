@@ -1,4 +1,4 @@
-package mx.hercarr.galileox.util;
+package mx.hercarr.photofinder.util;
 
 import android.content.Context;
 import android.widget.ImageView;
@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
-import mx.hercarr.galileox.R;
+import mx.hercarr.photofinder.R;
 
 public class ImageLoaderUtils {
 

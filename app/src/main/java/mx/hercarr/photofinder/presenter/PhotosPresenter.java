@@ -1,14 +1,14 @@
-package mx.hercarr.galileox.presenter;
+package mx.hercarr.photofinder.presenter;
 
 import android.content.Context;
 
 import java.util.List;
 
-import mx.hercarr.galileox.model.Photo;
-import mx.hercarr.galileox.rest.PhotoSearchResponse;
-import mx.hercarr.galileox.rest.PixabayClient;
-import mx.hercarr.galileox.util.ConnectionUtils;
-import mx.hercarr.galileox.view.IPhotosView;
+import mx.hercarr.photofinder.model.Photo;
+import mx.hercarr.photofinder.rest.PhotoSearchResponse;
+import mx.hercarr.photofinder.rest.PixabayClient;
+import mx.hercarr.photofinder.util.ConnectionUtils;
+import mx.hercarr.photofinder.view.IPhotosView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

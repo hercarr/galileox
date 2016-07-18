@@ -6,7 +6,7 @@
     android:background="@color/blackAlpha40"
     xmlns:tools="http://schemas.android.com/tools" >
 
-    <mx.hercarr.galileox.util.TouchImageView
+    <mx.hercarr.photofinder.util.TouchImageView
         android:id="@+id/imgPhoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

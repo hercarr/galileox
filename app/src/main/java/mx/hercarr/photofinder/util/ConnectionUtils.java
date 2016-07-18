@@ -1,4 +1,4 @@
-package mx.hercarr.galileox.util;
+package mx.hercarr.photofinder.util;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

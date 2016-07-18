@@ -1,4 +1,4 @@
-package mx.hercarr.galileox.model;
+package mx.hercarr.photofinder.model;
 
 import com.google.gson.annotations.SerializedName;
 

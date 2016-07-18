@@ -1,6 +1,6 @@
-package mx.hercarr.galileox.rest;
+package mx.hercarr.photofinder.rest;
 
-import mx.hercarr.galileox.model.Photo;
+import mx.hercarr.photofinder.model.Photo;
 
 public class PhotoResponse {
 

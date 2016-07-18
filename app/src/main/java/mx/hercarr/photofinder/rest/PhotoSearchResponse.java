@@ -1,8 +1,8 @@
-package mx.hercarr.galileox.rest;
+package mx.hercarr.photofinder.rest;
 
 import java.util.List;
 
-import mx.hercarr.galileox.model.Photo;
+import mx.hercarr.photofinder.model.Photo;
 
 public class PhotoSearchResponse {
 

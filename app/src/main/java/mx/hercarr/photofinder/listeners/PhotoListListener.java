@@ -1,8 +1,8 @@
-package mx.hercarr.galileox.listeners;
+package mx.hercarr.photofinder.listeners;
 
 import android.widget.ImageView;
 
-import mx.hercarr.galileox.model.Photo;
+import mx.hercarr.photofinder.model.Photo;
 
 public interface PhotoListListener {
 

@@ -1,4 +1,4 @@
-package mx.hercarr.galileox.activities;
+package mx.hercarr.photofinder.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,10 +7,10 @@ import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import mx.hercarr.galileox.R;
-import mx.hercarr.galileox.util.Constants;
-import mx.hercarr.galileox.util.ImageLoaderUtils;
-import mx.hercarr.galileox.util.TouchImageView;
+import mx.hercarr.photofinder.R;
+import mx.hercarr.photofinder.util.Constants;
+import mx.hercarr.photofinder.util.ImageLoaderUtils;
+import mx.hercarr.photofinder.util.TouchImageView;
 
 public class ViewPhotoActivity extends AppCompatActivity {
 

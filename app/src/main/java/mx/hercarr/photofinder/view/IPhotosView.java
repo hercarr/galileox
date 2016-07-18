@@ -1,8 +1,8 @@
-package mx.hercarr.galileox.view;
+package mx.hercarr.photofinder.view;
 
 import java.util.List;
 
-import mx.hercarr.galileox.model.Photo;
+import mx.hercarr.photofinder.model.Photo;
 
 public interface IPhotosView {
 

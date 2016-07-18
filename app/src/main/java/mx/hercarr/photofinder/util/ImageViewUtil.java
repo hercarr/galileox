@@ -1,4 +1,4 @@
-package mx.hercarr.galileox.util;
+package mx.hercarr.photofinder.util;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +12,7 @@ import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
 
 import java.io.ByteArrayOutputStream;
 
-import mx.hercarr.galileox.R;
+import mx.hercarr.photofinder.R;
 
 public class ImageViewUtil {
 

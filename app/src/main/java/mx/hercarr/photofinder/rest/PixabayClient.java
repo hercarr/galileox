@@ -1,4 +1,4 @@
-package mx.hercarr.galileox.rest;
+package mx.hercarr.photofinder.rest;
 
 import java.io.IOException;
 

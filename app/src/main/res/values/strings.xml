@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PhotoGallery</string>
+    <string name="app_name">Photo Finder</string>
 
     <string name="title.photo.share">Share image!</string>
     <string name="menu.main.about">About</string>

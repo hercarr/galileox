@@ -1,4 +1,4 @@
-package mx.hercarr.galileox.adapters;
+package mx.hercarr.photofinder.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -11,10 +11,10 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import mx.hercarr.galileox.R;
-import mx.hercarr.galileox.listeners.PhotoListListener;
-import mx.hercarr.galileox.model.Photo;
-import mx.hercarr.galileox.util.ImageLoaderUtils;
+import mx.hercarr.photofinder.R;
+import mx.hercarr.photofinder.listeners.PhotoListListener;
+import mx.hercarr.photofinder.model.Photo;
+import mx.hercarr.photofinder.util.ImageLoaderUtils;
 
 public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.PhotoViewHolder> {
 
