@@ -1,9 +1,14 @@
 package mx.hercarr.photofinder.activities;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -62,6 +67,20 @@ public class PhotoDetailActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case Constants.Permissions.WRITE_EXTERNAL_STORAGE:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    share();
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+                break;
+        }
+    }
+
     private void setupToolbar() {
         toolbar.setTitle(getString(R.string.photo_detail_label_loading));
         setSupportActionBar(toolbar);
@@ -94,7 +113,11 @@ public class PhotoDetailActivity extends AppCompatActivity {
 
     @OnClick(R.id.fabShare)
     public void share() {
-        ImageViewUtil.shareImage(this, imgPhoto, tags);
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, Constants.Permissions.WRITE_EXTERNAL_STORAGE);
+        } else {
+            ImageViewUtil.shareImage(this, imgPhoto, tags);
+        }
     }
 
     @OnClick(R.id.btnWebSite)

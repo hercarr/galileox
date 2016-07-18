@@ -1,7 +1,11 @@
 package mx.hercarr.photofinder.activities;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -54,6 +58,8 @@ public class MainActivity
     private PhotoListAdapter adapter;
     private String category = null;
 
+    private ImageView imageView;
+    private String title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +82,22 @@ public class MainActivity
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case Constants.Permissions.WRITE_EXTERNAL_STORAGE:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    if (imageView != null && title != null) {
+                        share(imageView, title);
+                    }
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+                break;
+        }
     }
 
     private void init() {
@@ -243,7 +265,13 @@ public class MainActivity
 
     @Override
     public void share(ImageView imageView, String title) {
-        ImageViewUtil.shareImage(this, imageView, title);
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            this.imageView = imageView;
+            this.title = title;
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, Constants.Permissions.WRITE_EXTERNAL_STORAGE);
+        } else {
+            ImageViewUtil.shareImage(this, imageView, title);
+        }
     }
 
 }
