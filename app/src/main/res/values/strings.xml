@@ -25,4 +25,14 @@
 
     <string name="photo.view.msg.tip">Rotate the screen or apply a zoom to the image for more detail!</string>
 
+    <string name="about.photo.finder.title">What\'s photo finder?</string>
+    <string name="about.photo.finder.info">This app allow to find free photos that you can share anywhere, you can filter by categories and search photos using a keyword.</string>
+    <string name="about.pixabay.title">Where they come from?</string>
+    <string name="about.pixabay.info">This app use the PIXABAY API to download images under Creative Commons licence. You may download, modify, distribute, and use them royalty free for anything you like.</string>
+    <string name="about.pixabay.website">Open pixabay.com</string>
+    <string name="about.contact.title">Do you have a comment?</string>
+    <string name="about.contact.developer.name">Developer: Víctor Hernández</string>
+    <string name="about.contact.developer.email">em@il: hercarr.mx@gmail.com</string>
+    <string name="about.contact.btn.send.email">Send me an email!</string>
+
 </resources>

@@ -25,4 +25,15 @@
 
     <string name="photo.view.msg.tip">Gira la pantalla o aplica un zoom a la imagen para más detalle!</string>
 
+    <string name="about.photo.finder.title">¿Qué es busca fotos?</string>
+    <string name="about.photo.finder.info">Esta aplicación permite buscar fotos gratuitas que puedes compartir en todo momento, puedes filtrar por categorías o buscar por una palabra clave.</string>
+
+    <string name="about.pixabay.title">¿De dónde provienen las fotos?</string>
+    <string name="about.pixabay.info">Esta aplicación usa la API the PIXABAY para descargar imagenes bajo la licencia Creative Commons. Tu puedes descargar, modificar, distribuir y usarlas libremente para lo que quieras.</string>
+    <string name="about.pixabay.website">Abrir pixabay.com</string>
+    <string name="about.contact.title">¿Tienes algún comentario?</string>
+    <string name="about.contact.developer.name">Desarrollador: Víctor Hernández</string>
+    <string name="about.contact.developer.email">em@il: hercarr.mx@gmail.com</string>
+    <string name="about.contact.btn.send.email">Enviame un email!</string>
+
 </resources>

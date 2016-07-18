@@ -25,6 +25,16 @@
         <item name="android:textSize">32sp</item>
     </style>
 
+    <style name="AboutTitle" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/colorAccent</item>>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="AboutInfo" parent="@android:style/TextAppearance.Small">
+        <item name="android:textColor">@color/colorSecondaryText</item>>
+        <item name="android:textSize">14sp</item>
+    </style>
+
     <style name="MainButton" parent="@android:style/TextAppearance.Medium">
         <item name="android:textColor">@android:color/white</item>>
         <item name="android:textSize">16sp</item>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context=".activities.AboutActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/photo_detail_info_margin"
+        android:text="@string/about.photo.finder.title"
+        style="@style/AboutTitle" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/photo_detail_info_margin"
+        android:text="@string/about.photo.finder.info"
+        style="@style/AboutInfo" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/photo_detail_info_margin"
+        android:text="@string/about.pixabay.title"
+        style="@style/AboutTitle" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/photo_detail_info_margin"
+        android:text="@string/about.pixabay.info"
+        style="@style/AboutInfo" />
+
+    <Button
+        android:id="@+id/btnWebSite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="@string/about.pixabay.website"
+        android:layout_marginTop="@dimen/photo_detail_info_margin"
+        style="@style/MainButton" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/photo_detail_info_margin"
+        android:text="@string/about.contact.title"
+        style="@style/AboutTitle"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/photo_detail_info_margin"
+        android:text="@string/about.contact.developer.name"
+        style="@style/AboutInfo" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/photo_detail_info_margin"
+        android:text="@string/about.contact.developer.email"
+        style="@style/AboutInfo" />
+
+    <Button
+        android:id="@+id/btnSendEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="@string/about.contact.btn.send.email"
+        android:layout_marginTop="@dimen/photo_detail_info_margin"
+        style="@style/MainButton"
+        android:textSize="14sp" />
+
+</LinearLayout>

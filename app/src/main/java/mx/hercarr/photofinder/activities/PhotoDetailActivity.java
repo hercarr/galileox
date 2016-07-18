@@ -62,6 +62,9 @@ public class PhotoDetailActivity extends AppCompatActivity {
             case android.R.id.home:
                 super.onBackPressed();
                 return true;
+            case R.id.action_about:
+                startActivity(new Intent(this, AboutActivity.class));
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
