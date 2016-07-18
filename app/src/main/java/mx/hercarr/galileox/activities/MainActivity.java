@@ -1,11 +1,7 @@
 package mx.hercarr.galileox.activities;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -20,9 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
-import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 

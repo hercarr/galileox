@@ -16,9 +16,6 @@ import mx.hercarr.galileox.listeners.PhotoListListener;
 import mx.hercarr.galileox.model.Photo;
 import mx.hercarr.galileox.util.ImageLoaderUtils;
 
-/**
- * Created by hercarr on 7/13/16.
- */
 public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.PhotoViewHolder> {
 
     private Context context;

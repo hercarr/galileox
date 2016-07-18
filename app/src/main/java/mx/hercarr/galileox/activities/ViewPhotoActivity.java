@@ -2,9 +2,7 @@ package mx.hercarr.galileox.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.WindowManager;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import butterknife.BindView;
@@ -14,9 +12,6 @@ import mx.hercarr.galileox.util.Constants;
 import mx.hercarr.galileox.util.ImageLoaderUtils;
 import mx.hercarr.galileox.util.TouchImageView;
 
-/**
- * Created by hercarr on 7/17/16.
- */
 public class ViewPhotoActivity extends AppCompatActivity {
 
     @BindView(R.id.imgPhoto)

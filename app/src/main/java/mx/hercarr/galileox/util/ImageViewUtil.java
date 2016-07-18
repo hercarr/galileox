@@ -1,6 +1,5 @@
 package mx.hercarr.galileox.util;
 
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -15,9 +14,6 @@ import java.io.ByteArrayOutputStream;
 
 import mx.hercarr.galileox.R;
 
-/**
- * Created by hercarr on 7/18/16.
- */
 public class ImageViewUtil {
 
     public static void shareImage(Context context, ImageView imageView, String title) {

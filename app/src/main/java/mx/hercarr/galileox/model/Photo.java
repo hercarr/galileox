@@ -2,11 +2,6 @@ package mx.hercarr.galileox.model;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
-
-/**
- * Created by hercarr on 7/13/16.
- */
 public class Photo {
 
     @SerializedName("id")
