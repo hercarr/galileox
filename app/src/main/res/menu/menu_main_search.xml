@@ -4,62 +4,62 @@
 
     <item
         android:id="@+id/action_search_animals"
-        android:title="@string/menu.label.photo.list.search.animals"
+        android:title="@string/photo.list.menu.search.animals"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_search_backgrounds"
-        android:title="@string/menu.label.photo.list.search.backgrounds"
+        android:title="@string/photo.list.menu.search.backgrounds"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_search_computer"
-        android:title="@string/menu.label.photo.list.search.computer"
+        android:title="@string/photo.list.menu.search.computer"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_search_education"
-        android:title="@string/menu.label.photo.list.search.education"
+        android:title="@string/photo.list.menu.search.education"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_search_fashion"
-        android:title="@string/menu.label.photo.list.search.fashion"
+        android:title="@string/photo.list.menu.search.fashion"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_search_food"
-        android:title="@string/menu.label.photo.list.search.food"
+        android:title="@string/photo.list.menu.search.food"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_search_music"
-        android:title="@string/menu.label.photo.list.search.music"
+        android:title="@string/photo.list.menu.search.music"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_search_nature"
-        android:title="@string/menu.label.photo.list.search.nature"
+        android:title="@string/photo.list.menu.search.nature"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_search_people"
-        android:title="@string/menu.label.photo.list.search.people"
+        android:title="@string/photo.list.menu.search.people"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_search_places"
-        android:title="@string/menu.label.photo.list.search.places"
+        android:title="@string/photo.list.menu.search.places"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_search_sports"
-        android:title="@string/menu.label.photo.list.search.sports"
+        android:title="@string/photo.list.menu.search.sports"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_search_travel"
-        android:title="@string/menu.label.photo.list.search.travel"
+        android:title="@string/photo.list.menu.search.travel"
         app:showAsAction="never" />
 
 </menu>

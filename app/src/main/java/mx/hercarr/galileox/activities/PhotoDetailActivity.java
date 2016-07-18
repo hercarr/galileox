@@ -16,14 +16,11 @@ import android.widget.TextView;
 
 import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
 
-import org.w3c.dom.Text;
-
 import java.io.ByteArrayOutputStream;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.OnLongClick;
 import mx.hercarr.galileox.R;
 import mx.hercarr.galileox.util.Constants;
 import mx.hercarr.galileox.util.ImageLoaderUtils;
@@ -41,7 +38,9 @@ public class PhotoDetailActivity extends AppCompatActivity {
     @BindView(R.id.lblLikes)
     TextView lblLikes;
 
+    private String imageUrl;
     private String pageUrl;
+    private String tags;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +69,7 @@ public class PhotoDetailActivity extends AppCompatActivity {
     }
 
     private void setupToolbar() {
-        toolbar.setTitle(getString(R.string.label_photo_detail_loading));
+        toolbar.setTitle(getString(R.string.photo_detail_label_loading));
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -79,16 +78,24 @@ public class PhotoDetailActivity extends AppCompatActivity {
 
     private void renderDetails() {
         if (getIntent() != null && getIntent().getExtras() != null) {
-            String imageUrl = getIntent().getStringExtra(Constants.IntentExtras.PHOTO_IMAGE_URL);
-            String tags = getIntent().getStringExtra(Constants.IntentExtras.PHOTO_TAGS);
+            imageUrl = getIntent().getStringExtra(Constants.IntentExtras.PHOTO_IMAGE_URL);
+            pageUrl = getIntent().getStringExtra(Constants.IntentExtras.PHOTO_PAGE_URL);
+            tags = getIntent().getStringExtra(Constants.IntentExtras.PHOTO_TAGS);
             Integer downloads = getIntent().getIntExtra(Constants.IntentExtras.PHOTO_DOWNLOADS, 0);
             Integer likes = getIntent().getIntExtra(Constants.IntentExtras.PHOTO_LIKES, 0);
             ImageLoaderUtils.loadImageDetail(PhotoDetailActivity.this, imgPhoto, imageUrl);
-            pageUrl = getIntent().getStringExtra(Constants.IntentExtras.PHOTO_PAGE_URL);
             collapsingToolbarLayout.setTitle(tags);
-            lblDownloads.setText(String.format(getString(R.string.label_photo_detail_downloads), downloads));
-            lblLikes.setText(String.format(getString(R.string.label_photo_detail_likes), likes));
+            lblDownloads.setText(String.format(getString(R.string.photo_detail_label_downloads), downloads));
+            lblLikes.setText(String.format(getString(R.string.photo_detail_label_likes), likes));
         }
+    }
+
+    @OnClick(R.id.imgPhoto)
+    public void show() {
+        Intent intent = new Intent(this, ViewPhotoActivity.class);
+        intent.putExtra(Constants.IntentExtras.PHOTO_IMAGE_URL, imageUrl);
+        intent.putExtra(Constants.IntentExtras.PHOTO_TAGS, tags);
+        startActivity(intent);
     }
 
     @OnClick(R.id.fabShare)
@@ -105,7 +112,7 @@ public class PhotoDetailActivity extends AppCompatActivity {
 
         if (bitmap != null) {
             Intent share = new Intent(Intent.ACTION_SEND);
-            share.setType("image/jpeg");
+            share.setType(Constants.Files.IMAGE_TYPE);
             ByteArrayOutputStream bytes = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
             String path = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, null, null);

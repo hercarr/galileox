@@ -1,4 +1,4 @@
-package mx.hercarr.galileox.activities.listeners;
+package mx.hercarr.galileox.listeners;
 
 import android.widget.ImageView;
 

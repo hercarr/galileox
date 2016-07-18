@@ -3,10 +3,7 @@ package mx.hercarr.galileox.activities;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.TransitionDrawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.content.ContextCompat;
@@ -15,7 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,14 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.target.SquaringDrawable;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -40,8 +29,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import mx.hercarr.galileox.R;
-import mx.hercarr.galileox.activities.listeners.PhotoListListener;
 import mx.hercarr.galileox.adapters.PhotoListAdapter;
+import mx.hercarr.galileox.listeners.PhotoListListener;
 import mx.hercarr.galileox.model.Photo;
 import mx.hercarr.galileox.presenter.PhotosPresenter;
 import mx.hercarr.galileox.rest.PixabayClient;
@@ -229,19 +218,19 @@ public class MainActivity
 
     @Override
     public void showNoResults() {
-        showMessage(getString(R.string.label_photo_list_no_results));
+        showMessage(getString(R.string.photo_list_label_no_results));
         hideRefreshing();
     }
 
     @Override
     public void showError(String error) {
-        showMessage(String.format(getString(R.string.label_photo_list_error), error));
+        showMessage(String.format(getString(R.string.photo_list_label_error), error));
         hideRefreshing();
     }
 
     @Override
     public void showNetworkError() {
-        showMessage(getString(R.string.label_photo_no_internet_connection));
+        showMessage(getString(R.string.msg_no_internet_connection));
         hideRefreshing();
     }
 
@@ -271,7 +260,7 @@ public class MainActivity
 
         if (bitmap != null) {
             Intent share = new Intent(Intent.ACTION_SEND);
-            share.setType("image/jpeg");
+            share.setType(Constants.Files.IMAGE_TYPE);
             ByteArrayOutputStream bytes = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
             String path = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, title, null);

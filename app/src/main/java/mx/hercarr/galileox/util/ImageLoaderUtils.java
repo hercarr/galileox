@@ -35,4 +35,11 @@ public class ImageLoaderUtils {
                 .into(imageView);
     }
 
+    public static void loadFullImage(Context context, ImageView imageView, String url) {
+        Glide.with(context)
+                .load(url)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(imageView);
+    }
+
 }

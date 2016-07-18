@@ -29,7 +29,7 @@
             app:floatingSearch_searchBarMarginLeft="@dimen/search_view_inset"
             app:floatingSearch_searchBarMarginTop="@dimen/search_view_inset"
             app:floatingSearch_searchBarMarginRight="@dimen/search_view_inset"
-            app:floatingSearch_searchHint="@string/label.photo.list.search"
+            app:floatingSearch_searchHint="@string/photo.list.label.search"
             app:floatingSearch_leftActionMode="showSearch"
             app:floatingSearch_showVoiceInput="true"
             app:floatingSearch_showSearchKey="true"
@@ -71,7 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="@string/label.photo.no.internet.connection"
+            android:text="@string/msg.no.internet.connection"
             android:textAlignment="center"
             style="@style/PhotoListMessage" />
 

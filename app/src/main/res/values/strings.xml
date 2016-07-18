@@ -1,28 +1,31 @@
 <resources>
     <string name="app_name">PhotoGallery</string>
 
-    <string name="label.photo.no.internet.connection">Oops! No internet connection available!</string>
-    <string name="label.photo.list.search">Search amazing photos&#8230;</string>
-    <string name="label.photo.list.no.results">Oops! No pictures found!</string>
-    <string name="label.photo.list.error">Oops! There was some error: %s</string>
-    <string name="menu.label.photo.list.search.animals">Animals</string>
-    <string name="menu.label.photo.list.search.backgrounds">Backgrounds</string>
-    <string name="menu.label.photo.list.search.computer">Computer</string>
-    <string name="menu.label.photo.list.search.education">Education</string>
-    <string name="menu.label.photo.list.search.fashion">Fashion</string>
-    <string name="menu.label.photo.list.search.food">Food</string>
-    <string name="menu.label.photo.list.search.music">Music</string>
-    <string name="menu.label.photo.list.search.nature">Nature</string>
-    <string name="menu.label.photo.list.search.people">People</string>
-    <string name="menu.label.photo.list.search.places">Places</string>
-    <string name="menu.label.photo.list.search.sports">Sports</string>
-    <string name="menu.label.photo.list.search.travel">Travel</string>
-
-    <string name="label.photo.detail.loading">Loading&#8230;</string>
-    <string name="label.photo.detail.downloads">%s downloads!</string>
-    <string name="label.photo.detail.likes">%s likes!</string>
-    <string name="btn.photo.detail.website">Open in the browser!</string>
-
     <string name="title.photo.share">Share image!</string>
     <string name="menu.main.about">About</string>
+    <string name="msg.no.internet.connection">Oops! No internet connection available!</string>
+
+    <string name="photo.list.label.search">Search amazing photos&#8230;</string>
+    <string name="photo.list.label.no.results">Oops! No pictures found!</string>
+    <string name="photo.list.label.error">Oops! There was some error: %s</string>
+    <string name="photo.list.menu.search.animals">Animals</string>
+    <string name="photo.list.menu.search.backgrounds">Backgrounds</string>
+    <string name="photo.list.menu.search.computer">Computer</string>
+    <string name="photo.list.menu.search.education">Education</string>
+    <string name="photo.list.menu.search.fashion">Fashion</string>
+    <string name="photo.list.menu.search.food">Food</string>
+    <string name="photo.list.menu.search.music">Music</string>
+    <string name="photo.list.menu.search.nature">Nature</string>
+    <string name="photo.list.menu.search.people">People</string>
+    <string name="photo.list.menu.search.places">Places</string>
+    <string name="photo.list.menu.search.sports">Sports</string>
+    <string name="photo.list.menu.search.travel">Travel</string>
+
+    <string name="photo.detail.label.loading">Loading&#8230;</string>
+    <string name="photo.detail.label.downloads">%s downloads!</string>
+    <string name="photo.detail.label.likes">%s likes!</string>
+    <string name="photo.detail.btn.website">Open in the browser!</string>
+
+    <string name="photo.view.msg.tip">Rotate the screen or apply a zoom to the image for more detail!</string>
+
 </resources>

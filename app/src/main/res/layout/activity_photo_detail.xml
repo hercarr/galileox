@@ -100,7 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
-                android:text="@string/btn.photo.detail.website"
+                android:text="@string/photo.detail.btn.website"
                 android:layout_marginTop="@dimen/photo_detail_info_margin"
                 style="@style/MainButton" />
 

@@ -12,7 +12,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import mx.hercarr.galileox.R;
-import mx.hercarr.galileox.activities.listeners.PhotoListListener;
+import mx.hercarr.galileox.listeners.PhotoListListener;
 import mx.hercarr.galileox.model.Photo;
 import mx.hercarr.galileox.util.ImageLoaderUtils;
 
