@@ -5,7 +5,7 @@ This app shows an image gallery. It's the final project in the Android professio
 
 #### Available on Google Play, download it!!!
 
-![alt text][logo]
+![alt https://play.google.com/store/apps/details?id=mx.hercarr.photofinder][logo]
 
 [logo]: https://www.gstatic.com/android/market_images/web/play_prism_hlock_2x.png "Google Play"
 
