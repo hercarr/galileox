@@ -38,7 +38,7 @@ public class PixabayClient {
 
                 HttpUrl url = originalUrl.newBuilder()
                                          .addQueryParameter("key", KEY)
-                                         .addQueryParameter("per_page", Parameters.DEFAULT_RECORDS)
+                                         .addQueryParameter("per_page", String.valueOf(Parameters.DEFAULT_RECORDS))
                                          .build();
 
                 Request.Builder builder = originalRequest.newBuilder()
@@ -80,7 +80,7 @@ public class PixabayClient {
         public static final String PLACES = "places";
         public static final String SPORTS = "sports";
         public static final String TRAVELS = "travel";
-        public static final String DEFAULT_RECORDS = "50";
+        public static final Integer DEFAULT_RECORDS = 50;
     }
 
 }

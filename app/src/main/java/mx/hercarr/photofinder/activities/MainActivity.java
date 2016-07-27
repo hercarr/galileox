@@ -9,9 +9,11 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,7 +30,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import mx.hercarr.photofinder.R;
 import mx.hercarr.photofinder.adapters.PhotoListAdapter;
-import mx.hercarr.photofinder.listeners.PhotoListListener;
+import mx.hercarr.photofinder.listeners.PhotoListClickListener;
 import mx.hercarr.photofinder.model.Photo;
 import mx.hercarr.photofinder.presenter.PhotosPresenter;
 import mx.hercarr.photofinder.rest.PixabayClient;
@@ -39,7 +41,7 @@ import mx.hercarr.photofinder.view.IPhotosView;
 
 public class MainActivity
         extends AppCompatActivity
-        implements IPhotosView, PhotoListListener {
+        implements IPhotosView, PhotoListClickListener {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -60,6 +62,10 @@ public class MainActivity
 
     private ImageView imageView;
     private String title;
+
+    private boolean isLoadingMore;
+    private int totalItems;
+    private int lastItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,8 +113,8 @@ public class MainActivity
         setupAdapter();
         setupSwipeToRefresh();
         setupRecyclerView();
-        presenter = new PhotosPresenter(this);
-        presenter.searchPhotos(this, null, null);
+        presenter = new PhotosPresenter(this, this);
+        presenter.searchPhotos(null, null);
         swipeToRefresh.post(new Runnable() {
             @Override
             public void run() {
@@ -134,7 +140,7 @@ public class MainActivity
 
             @Override
             public void onFocusCleared() {
-                presenter.searchPhotos(MainActivity.this, null, searchView.getQuery());
+                presenter.searchPhotos(null, searchView.getQuery());
             }
         });
         searchView.setOnMenuItemClickListener(new FloatingSearchView.OnMenuItemClickListener() {
@@ -170,7 +176,7 @@ public class MainActivity
                         category = PixabayClient.Parameters.TRAVELS;
                         break;
                 }
-                presenter.searchPhotos(MainActivity.this, category, searchView.getQuery());
+                presenter.searchPhotos(category, searchView.getQuery());
             }
         });
     }
@@ -183,7 +189,7 @@ public class MainActivity
         swipeToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                presenter.searchPhotos(MainActivity.this, category, searchView.getQuery());
+                presenter.searchPhotos(category, searchView.getQuery());
             }
         });
         swipeToRefresh.setColorSchemeColors(
@@ -195,9 +201,24 @@ public class MainActivity
 
     private void setupRecyclerView() {
         hideMessage();
-        rvPhotos.setLayoutManager(new GridLayoutManager(this, 2));
+        final GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
+        rvPhotos.setHasFixedSize(true);
+        rvPhotos.setLayoutManager(gridLayoutManager);
+        rvPhotos.setItemAnimator(new DefaultItemAnimator());
         rvPhotos.addItemDecoration(new ItemOffsetDecoration(this, R.dimen.card_view_item_offset));
         rvPhotos.setAdapter(adapter);
+        rvPhotos.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                totalItems  = gridLayoutManager.getItemCount();
+                lastItem = gridLayoutManager.findLastVisibleItemPosition();
+                if (!isLoadingMore && totalItems == lastItem + 1) {
+                    isLoadingMore = true;
+                    presenter.loadMorePhotos(category, searchView.getQuery());
+                }
+            }
+        });
     }
 
     private void hideRefreshing() {
@@ -223,6 +244,17 @@ public class MainActivity
         hideRefreshing();
         adapter.reload(photos);
         rvPhotos.smoothScrollToPosition(0);
+    }
+
+    @Override
+    public void showMorePhotos(List<Photo> photos) {
+        adapter.addPhotos(photos);
+        isLoadingMore = false;
+    }
+
+    @Override
+    public void showLoadMorePhotos() {
+
     }
 
     @Override

@@ -15,19 +15,38 @@ import retrofit2.Response;
 
 public class PhotosPresenter {
 
+    private Context context;
     private IPhotosView view;
+    private int currentPage;
 
-    public PhotosPresenter(IPhotosView view) {
+    public PhotosPresenter(Context context,  IPhotosView view) {
+        this.context = context;
         this.view = view;
+        this.currentPage = 1;
     }
 
-    public void searchPhotos(Context context, String category, String keyword) {
+    public void searchPhotos(String category, String keyword) {
+        currentPage = 1;
+        downloadPhotos(category, keyword, false);
+    }
+
+    public void loadMorePhotos(String category, String keyword) {
+        currentPage++;
+        view.showLoadMorePhotos();
+        downloadPhotos(category, keyword, true);
+    }
+
+    private void downloadPhotos(String category, String keyword, final boolean isLoadingMorePhotos) {
         if (ConnectionUtils.hasInternetAccess(context)) {
-            Call<PhotoSearchResponse> call = PixabayClient.getPhotoService().searchPhotos(category, keyword);
+            Call<PhotoSearchResponse> call = PixabayClient.getPhotoService().searchPhotos(currentPage, category, keyword);
             call.enqueue(new Callback<PhotoSearchResponse>() {
                 @Override
                 public void onResponse(Call<PhotoSearchResponse> call, Response<PhotoSearchResponse> response) {
-                    notifyResults(response.body().getHits());
+                    if (response.body() != null) {
+                        notifyResults(response.body().getHits(), isLoadingMorePhotos);
+                    } else {
+                        view.showNoResults();
+                    }
                 }
 
                 @Override
@@ -40,11 +59,16 @@ public class PhotosPresenter {
         }
     }
 
-    private void notifyResults(List<Photo> photos) {
-        if (photos != null && photos.size() > 0)
-            view.showPhotos(photos);
-        else
+    private void notifyResults(List<Photo> photos, boolean isLoadingMorePhotos) {
+        if (photos != null && photos.size() > 0) {
+            if (isLoadingMorePhotos) {
+                view.showMorePhotos(photos);
+            } else {
+                view.showPhotos(photos);
+            }
+        } else {
             view.showNoResults();
+        }
     }
 
 }

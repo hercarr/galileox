@@ -12,7 +12,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import mx.hercarr.photofinder.R;
-import mx.hercarr.photofinder.listeners.PhotoListListener;
+import mx.hercarr.photofinder.listeners.PhotoListClickListener;
 import mx.hercarr.photofinder.model.Photo;
 import mx.hercarr.photofinder.util.ImageLoaderUtils;
 
@@ -20,9 +20,9 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.Phot
 
     private Context context;
     private List<Photo> photos;
-    private PhotoListListener listener;
+    private PhotoListClickListener listener;
 
-    public PhotoListAdapter(Context context, List<Photo> photos, PhotoListListener listener) {
+    public PhotoListAdapter(Context context, List<Photo> photos, PhotoListClickListener listener) {
         this.context = context;
         this.photos = photos;
         this.listener = listener;
@@ -47,6 +47,13 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.Phot
     public void reload(List<Photo> photos) {
         this.photos = photos;
         notifyDataSetChanged();
+    }
+
+    public void addPhotos(List<Photo> photos) {
+        if (this.photos != null && photos != null) {
+            this.photos.addAll(photos);
+            notifyDataSetChanged();
+        }
     }
 
     protected class PhotoViewHolder extends RecyclerView.ViewHolder {
